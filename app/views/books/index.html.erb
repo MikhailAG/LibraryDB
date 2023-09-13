@@ -1,0 +1,80 @@
+<%= stylesheet_link_tag "styles" %>
+<section class="catalog">
+  <h1 class="catalog__title">Каталог книг</h1>
+  <table class="catalog__table">
+  <thead class="catalog__thead">
+
+  <tr class="catalog__tr">
+
+    <th class="catalog__th">Название</th>
+
+    <th class="catalog__th">Авторы</th>
+
+    <th class="catalog__th">Жанр</th>
+
+    <th class="catalog__th">Кол-во экземпляров</th>
+
+  </tr>
+
+  </thead>
+
+  <tbody class="catalog__tbody">
+
+  <% @books.each do |book| %>
+
+    <tr class="catalog__tr">
+
+      <td class="catalog__td"><%= book.title %></td>
+
+      <td class="catalog__td">
+
+        <% book.authors.each do |author| %>
+
+          <%= author.name %>
+
+        <% end %>
+
+      </td>
+
+      <td class="catalog__td">
+
+        <% book.genres.each do |genre| %>
+
+          <%= genre.name %>
+
+        <% end %>
+
+      </td>
+
+      <td class="catalog__td"><%= book.book_copies.count %></td>
+
+    </tr>
+
+  <% end %>
+
+  </tbody>
+</table> </section> <section class="actions">
+  <%= link_to 'Добавить книгу', new_book_path, class: "actions__link" %>
+
+</section> <section class="filter"> <h2 class="filter__title">Фильтр</h2>
+<%= form_tag books_path, method: :get, class: "filter__form" do %>
+    <div class="filter__item">
+
+      <%= label_tag :author_id, "Автор", class: "filter__label" %>
+
+      <%= collection_select :book, :author_id, Author.all, :id, :name, {}, {class: "filter__select"} %>
+
+    </div>
+
+    <div class="filter__item">
+
+      <%= label_tag :genre_id, "Жанр", class: "filter__label" %>
+
+      <%= collection_select :book, :genre_id, Genre.all, :id, :name, {}, {class: "filter__select"} %>
+
+    </div>
+
+  <%= submit_tag "Фильтровать", class: "filter__submit" %>
+  <% end %>
+
+</section>

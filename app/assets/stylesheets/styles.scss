@@ -1,66 +1,93 @@
-// Цвета
-$table-bg: #f9f9f9;
-$table-border: #e8e8e8;
+// Colors
+$primary: #333;
+$secondary: #555;
+$light: #eee;
 
-// Шрифты
-$font-family: Montserrat, sans-serif;
-$h1-font-size: 24px;
+.catalog {
+  max-width: 1000px;
+  margin: 0 auto;
 
-// Отступы
-$section-margin: 20px;
+  &__title {
+    text-align: center;
+    color: $primary;
+    font-size: 2em;
+  }
 
-// Таблица
-table {
-  width: 100%;
-  border-collapse: collapse;
-  background: $table-bg;
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid $light;
+    th, td {
+      padding: 15px 20px;
+    }
 
-  th, td {
-    padding: 10px 15px;
-    border: 1px solid $table-border;
+    th {
+      background: $light;
+      color: $primary;
+      font-weight: bold;
+    }
+
+    td {
+      border-bottom: 1px solid $light;
+    }
   }
 }
 
-// Заголовки
-h1 {
-  font-size: $h1-font-size;
-  font-family: $font-family;
-  margin: 0 0 $section-margin 0;
-}
-
-h2 {
-  @extend h1;
-  font-size: 18px;
-}
-
-// Форма
-form {
+.actions {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
+  justify-content: center;
 
-  label {
-    margin-right: 10px;
-  }
-
-  input, select {
-    margin-right: 20px;
-  }
-
-  button {
-    padding: 8px 12px;
+  &__link {
+    display: inline-block;
+    padding: 10px 20px;
+    color: #fff;
+    background: $secondary;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    &:hover {
+      background: darken($secondary, 10%);
+    }
   }
 }
+.filter {
+  margin-top: 40px;
 
-a {
-  display: inline-block;
-  padding: 8px 12px;
-  background: #007bff;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 4px;
+  &__title {
+    text-align: center;
+    color: $primary;
+    margin-bottom: 30px;
+  }
 
-  &:hover {
-    background: lighten(#007bff, 10%);
+  &__form {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__item {
+    margin: 0 20px;
+  }
+
+  &__label {
+    display: block;
+    margin-bottom: 10px;
+    color: $primary;
+  }
+
+  &__select {
+    padding: 10px;
+    border: 1px solid $light;
+    border-radius: 4px;
+  }
+
+  &__submit {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background: $secondary;
+    color: #fff;
+    &:hover {
+      background: darken($secondary, 10%);
+    }
   }
 }

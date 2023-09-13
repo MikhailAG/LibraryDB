@@ -1,0 +1,6 @@
+<h1>Список авторов</h1>
+<ul>  <% @authors.each do |author| %>
+  <p> <%= author.name %> <%= link_to 'Просмотр', author_path(author) %> </p> <% end %>
+</ul>
+
+<%= link_to 'Добавить автора', new_author_path %>

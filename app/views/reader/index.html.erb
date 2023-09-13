@@ -1,0 +1,15 @@
+<h1>Читатели</h1>
+<table>
+  <tr>
+    <th>ФИО</th>
+    <th>Кол-во броней</th>
+  </tr>
+  <% @readers.each do |reader| %>
+    <tr>
+      <td><%= link_to reader.full_name, reader_path(reader) %></td>
+      <td><%= reader.reservations.count %></td>
+    </tr>
+  <% end %>
+
+</table>
+<%= link_to 'Новый читатель', new_reader_path %>

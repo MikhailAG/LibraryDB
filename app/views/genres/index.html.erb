@@ -1,0 +1,7 @@
+<h1>Жанры</h1>
+
+<ul> <% @genres.each do |genre| %>
+    <li> <%= genre.name %> (<%= genre.books.count %> книг) </li> <% end %>
+</ul>
+
+<%= link_to 'Добавить жанр', new_genre_path %>
