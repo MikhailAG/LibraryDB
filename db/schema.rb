@@ -49,14 +49,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_13_044421) do
     t.index ["genre_id", "book_id"], name: "index_books_genres_on_genre_id_and_book_id"
   end
 
-  create_table "genre_books", force: :cascade do |t|
-    t.bigint "genre_id"
-    t.bigint "book_id"
-    t.index ["book_id"], name: "index_genre_books_on_book_id"
-    t.index ["genre_id", "book_id"], name: "index_genre_books_on_genre_id_and_book_id", unique: true
-    t.index ["genre_id"], name: "index_genre_books_on_genre_id"
-  end
-
   create_table "genres", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
