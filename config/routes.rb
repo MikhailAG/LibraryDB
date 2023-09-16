@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
-  get 'genres' => 'genres#index'
   get 'authors' => 'authors#index'
 
   resources :books do
     resources :book_copies, only: [:new, :create]
+    post 'upload_cover', on: :collection
+  end
+  resources :authors do
+    post 'upload_photo', on: :collection
   end
 
   resources :books

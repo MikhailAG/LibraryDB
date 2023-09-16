@@ -21,10 +21,16 @@ class BooksController < ApplicationController
     end
   end
 
+  def upload_cover
+    book = Book.find(params[:book_id])
+    book.cover.attach(params[:cover])
+    redirect_to books_path
+  end
+
   private
 
   def book_params
-    params.require(:book).permit(:title, :description, author_ids: [], genre_ids: [])
+    params.require(:book).permit(:title, :description, :cover, author_ids: [], genre_ids: [])
   end
 
 end

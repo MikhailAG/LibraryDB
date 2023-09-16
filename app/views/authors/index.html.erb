@@ -1,6 +1,44 @@
-<h1>Список авторов</h1>
-<ul>  <% @authors.each do |author| %>
-  <p> <%= author.name %> <%= link_to 'Просмотр', author_path(author) %> </p> <% end %>
-</ul>
+<%= stylesheet_link_tag "styles" %>
+<section class="catalog">
+  <h1 class="catalog__title">Список авторов</h1>
+  <table class="catalog__table">
+    <thead class="catalog__thead">
 
-<%= link_to 'Добавить автора', new_author_path %>
+    <tr class="catalog__tr">
+
+      <th class="catalog__th">Автор</th>
+
+      <th class="catalog__th">Книги</th>
+
+    </tr>
+
+    </thead>
+
+    <tbody class="catalog__tbody">
+
+    <% @authors.each do |author| %>
+
+      <tr class="catalog__tr">
+
+        <td class="catalog__td"><%= author.name %></td>
+
+        <td class="catalog__td">
+
+          <% author.books.each do |book| %>
+
+            <%= book.title %>
+
+          <% end %>
+
+        </td>
+
+      </tr>
+    <% end %>
+      </tbody>
+      </table>
+      </section>
+
+<h2>Загрузить фото автора</h2>
+<%= render 'upload_form' %>
+
+<%= link_to "Перейти к книгам", "/" %>

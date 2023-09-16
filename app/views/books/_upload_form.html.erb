@@ -1,0 +1,7 @@
+<%= form_with url: upload_cover_books_path, local: true do |form| %>
+  <%= form.label :book_id %>
+  <%= form.select :book_id, Book.all.collect{ |b| [b.title, b.id] } %>
+  <%= form.label :cover %>
+  <%= form.file_field :cover %>
+  <%= form.submit "Загрузить" %>
+<% end %>

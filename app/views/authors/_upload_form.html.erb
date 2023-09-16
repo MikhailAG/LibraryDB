@@ -1,0 +1,7 @@
+<%= form_with url: upload_photo_authors_path, local: true do |form| %>
+  <%= form.label :author_id %>
+  <%= form.select :author_id, Author.all.collect{ |b| [b.name, b.id] } %>
+  <%= form.label :photo %>
+  <%= form.file_field :photo %>
+  <%= form.submit "Загрузить" %>
+<% end %>
